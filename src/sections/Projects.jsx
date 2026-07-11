@@ -1,39 +1,43 @@
-import { motion } from "framer-motion";
 import SectionTitle from "../components/common/SectionTitle";
 import ProjectCard from "../components/common/ProjectCard";
 import { portfolio } from "../data/portfolio";
 
 function Projects() {
+  const featured = portfolio.projects[2];
+
+  const others = portfolio.projects.slice(0, 2);
+
   return (
     <section
       id="projects"
-      className="py-32 bg-slate-900"
+      className="py-32"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
 
         <SectionTitle
-          title="Featured Projects"
-          subtitle="Portfolio"
+          title="Projects"
+          subtitle="My Work"
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-3 gap-8"
-        >
+        {/* Featured */}
 
-          {portfolio.projects.map((project) => (
+        <ProjectCard
+          project={featured}
+          featured={true}
+        />
 
+        {/* Other Projects */}
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+
+          {others.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
             />
-
           ))}
 
-        </motion.div>
+        </div>
 
       </div>
     </section>
