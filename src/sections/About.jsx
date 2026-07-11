@@ -1,105 +1,118 @@
+import { motion } from "framer-motion";
+import { FaCode, FaLaptopCode, FaUserGraduate } from "react-icons/fa";
 import SectionTitle from "../components/common/SectionTitle";
 
 function About() {
+  const cards = [
+    {
+      icon: <FaCode className="text-4xl text-violet-400" />,
+      title: "Clean Code",
+      text: "I focus on writing maintainable and scalable code."
+    },
+    {
+      icon: <FaLaptopCode className="text-4xl text-cyan-400" />,
+      title: "Full Stack",
+      text: "Building modern applications using MERN Stack."
+    },
+    {
+      icon: <FaUserGraduate className="text-4xl text-green-400" />,
+      title: "Always Learning",
+      text: "Learning new technologies and improving every day."
+    }
+  ];
+
   return (
     <section
       id="about"
-      className="py-32 bg-slate-900"
+      className="py-32"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
 
         <SectionTitle
           title="About Me"
-          subtitle="Who Am I"
+          subtitle="Who I Am"
         />
 
         <div className="grid lg:grid-cols-2 gap-20 items-center">
 
-          {/* Left */}
+          <motion.div
+            initial={{ opacity:0,x:-60 }}
+            whileInView={{ opacity:1,x:0 }}
+            transition={{ duration:.6 }}
+            viewport={{ once:true }}
+          >
 
-          <div className="flex justify-center">
+            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-10">
 
-            <div className="relative">
+              <h2 className="text-4xl font-bold">
+                MERN Stack Developer
+              </h2>
 
-              <div className="absolute inset-0 bg-violet-600 blur-3xl opacity-30 rounded-3xl"></div>
+              <p className="mt-6 text-slate-400 leading-8">
 
-              <div className="relative w-[350px] h-[420px] rounded-3xl bg-gradient-to-br from-violet-600 to-cyan-500 p-1">
+                Passionate Full Stack Developer from India.
 
-                <div className="w-full h-full rounded-3xl bg-slate-950 flex items-center justify-center text-8xl font-black">
+                I love building beautiful user interfaces,
+                REST APIs and scalable backend applications.
 
-                  RG
+              </p>
+
+              <p className="mt-6 text-slate-400 leading-8">
+
+                Currently improving my React,
+                Node.js,
+                MongoDB,
+                Tailwind CSS,
+                and backend architecture skills.
+
+              </p>
+
+            </div>
+
+          </motion.div>
+
+          <motion.div
+
+            initial={{ opacity:0,x:60 }}
+            whileInView={{ opacity:1,x:0 }}
+            transition={{ duration:.6 }}
+            viewport={{ once:true }}
+
+            className="grid gap-6"
+
+          >
+
+            {
+
+              cards.map((card)=>(
+                <div
+
+                  key={card.title}
+
+                  className="rounded-3xl border border-slate-800 bg-slate-900 p-8 hover:border-violet-500 duration-300"
+
+                >
+
+                  {card.icon}
+
+                  <h3 className="mt-5 text-2xl font-bold">
+
+                    {card.title}
+
+                  </h3>
+
+                  <p className="mt-3 text-slate-400 leading-7">
+
+                    {card.text}
+
+                  </p>
 
                 </div>
+              ))
 
-              </div>
+            }
 
-            </div>
-
-          </div>
-
-          {/* Right */}
-
-          <div>
-
-            <h3 className="text-4xl font-bold mb-8">
-
-              Full Stack Developer
-
-            </h3>
-
-            <p className="text-slate-400 leading-9">
-
-              I am a passionate MERN Stack Developer who loves
-              building responsive web applications with modern UI
-              and clean backend architecture.
-
-            </p>
-
-            <p className="text-slate-400 leading-9 mt-8">
-
-              Currently focusing on React, Node.js,
-              Express, MongoDB and creating production-ready
-              applications.
-
-            </p>
-
-            <div className="grid grid-cols-2 gap-6 mt-12">
-
-              <div className="bg-slate-800 rounded-2xl p-8">
-
-                <h1 className="text-4xl font-black text-violet-500">
-
-                  5+
-
-                </h1>
-
-                <p className="mt-3 text-slate-400">
-
-                  Projects
-
-                </p>
-
-              </div>
-
-              <div className="bg-slate-800 rounded-2xl p-8">
-
-                <h1 className="text-4xl font-black text-cyan-400">
-
-                  MERN
-
-                </h1>
-
-                <p className="mt-3 text-slate-400">
-
-                  Tech Stack
-
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
+          </motion.div>
 
         </div>
 

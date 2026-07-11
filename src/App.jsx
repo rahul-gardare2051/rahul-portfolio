@@ -5,7 +5,7 @@ import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
-
+import Background from "./components/Background";
 function App() {
   return (
     <main className="bg-slate-950 text-white min-h-screen">
