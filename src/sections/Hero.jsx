@@ -1,14 +1,18 @@
+import profile from "../assets/profile.jpg";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import {
   FaGithub,
   FaLinkedin,
   FaDownload,
+  FaReact,
+  FaNodeJs,
 } from "react-icons/fa";
+import { SiMongodb, SiJavascript } from "react-icons/si";
 
 import Button from "../components/common/Button";
-import { portfolio } from "../data/portfolio";
 import Badge from "../components/ui/Badge";
+import { portfolio } from "../data/portfolio";
 
 function Hero() {
   return (
@@ -16,19 +20,21 @@ function Hero() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 pt-28 pb-20 lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 pt-28 pb-20 lg:grid-cols-2 lg:gap-24 lg:px-8">
 
         {/* LEFT */}
 
         <motion.div
           initial={{ opacity: 0, x: -70 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
+          transition={{ duration: 0.8 }}
+          className="order-2 text-center lg:order-1 lg:text-left"
         >
-       <Badge>
-       Available for Work
-       </Badge>
-          <h1 className="mt-8 text-6xl lg:text-7xl font-black leading-tight tracking-tight">
+          <div className="flex justify-center lg:justify-start">
+            <Badge>Available for Work</Badge>
+          </div>
+
+          <h1 className="mt-8 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-7xl">
             Hi, I'm
             <span className="block text-violet-500">
               {portfolio.name}
@@ -46,33 +52,40 @@ function Hero() {
             ]}
             repeat={Infinity}
             wrapper="h2"
-            className="mt-6 text-3xl font-bold text-cyan-400"
+            className="mt-6 text-xl font-bold text-cyan-400 sm:text-2xl lg:text-3xl"
           />
 
-          <p className="mt-8 max-w-lg text-lg leading-9 text-slate-400">
+          <p className="mx-auto mt-8 max-w-lg text-base leading-8 text-slate-400 lg:mx-0 lg:text-lg lg:leading-9">
             {portfolio.description}
           </p>
 
-         <div className="mt-12 flex flex-wrap items-center gap-5">
-            <Button>
-              Hire Me
-            </Button>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
+            <a href="#contact">
+              <Button>Hire Me</Button>
+            </a>
 
-            <Button variant="secondary">
-              <div className="flex items-center gap-2">
-                <FaDownload />
-                Resume
-              </div>
-            </Button>
-
+            <a
+              href={portfolio.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="secondary">
+                <div className="flex items-center gap-2">
+                  <FaDownload />
+                  Resume
+                </div>
+              </Button>
+            </a>
           </div>
 
-         <div className="mt-12 flex items-center gap-7 text-3xl">
+          <div className="mt-10 flex justify-center gap-5 lg:justify-start">
+
             <a
               href={portfolio.github}
               target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-cyan-400"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-700 bg-slate-900 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500 hover:text-violet-400"
             >
               <FaGithub />
             </a>
@@ -80,8 +93,9 @@ function Hero() {
             <a
               href={portfolio.linkedin}
               target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-cyan-400"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-700 bg-slate-900 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400 hover:text-cyan-400"
             >
               <FaLinkedin />
             </a>
@@ -95,56 +109,60 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, x: 70 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
-          className="flex justify-center"
+          transition={{ duration: 0.8 }}
+          className="order-1 mb-12 flex justify-center lg:order-2 lg:mb-0"
         >
-
           <div className="relative">
 
-  {/* Glow */}
+            {/* Glow */}
 
-  <div className="absolute inset-0 rounded-full bg-violet-600 blur-[120px] opacity-40 animate-pulse"></div>
+            <div className="absolute -inset-8 -z-10 rounded-[60px] bg-gradient-to-r from-violet-600/30 to-cyan-500/30 blur-3xl"></div>
 
-  {/* React */}
+            {/* React */}
 
-  <div className="absolute -left-8 top-10 animate-bounce rounded-full bg-slate-900 p-4 shadow-xl">
-    ⚛️
-  </div>
+            <div className="absolute -left-8 top-6 z-20 rounded-2xl border border-slate-700 bg-slate-900 p-3 shadow-xl animate-float lg:-left-20 lg:top-10 lg:p-4">
+              <FaReact className="text-3xl text-cyan-400 lg:text-4xl" />
+            </div>
 
-  {/* Node */}
+            {/* Node */}
 
-  <div className="absolute -right-6 top-20 animate-bounce rounded-full bg-slate-900 p-4 shadow-xl">
-    🟢
-  </div>
+            <div className="absolute -right-8 top-10 z-20 rounded-2xl border border-slate-700 bg-slate-900 p-3 shadow-xl animate-float lg:-right-20 lg:top-16 lg:p-4">
+              <FaNodeJs className="text-3xl text-green-500 lg:text-4xl" />
+            </div>
 
-  {/* Mongo */}
+            {/* Mongo */}
 
-  <div className="absolute left-2 bottom-14 animate-bounce rounded-full bg-slate-900 p-4 shadow-xl">
-    🍃
-  </div>
+            <div className="absolute -left-8 bottom-6 z-20 rounded-2xl border border-slate-700 bg-slate-900 p-3 shadow-xl animate-float lg:-left-20 lg:bottom-8 lg:p-4">
+              <SiMongodb className="text-3xl text-green-400 lg:text-4xl" />
+            </div>
 
-  {/* JavaScript */}
+            {/* JavaScript */}
 
-  <div className="absolute -right-5 bottom-10 animate-bounce rounded-full bg-slate-900 p-4 shadow-xl">
-    🟨
-  </div>
+            <div className="absolute -right-8 bottom-6 z-20 rounded-2xl border border-slate-700 bg-slate-900 p-3 shadow-xl animate-float lg:-right-20 lg:bottom-8 lg:p-4">
+              <SiJavascript className="text-3xl text-yellow-400 lg:text-4xl" />
+            </div>
 
-  {/* Avatar */}
+            {/* Profile */}
 
-  <div className="relative h-[430px] w-[430px] rounded-[40px] bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 p-[3px] shadow-2xl shadow-violet-500/20">
+            <div className="relative h-[300px] w-[300px] overflow-hidden rounded-[32px] border border-violet-500/40 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 p-[3px] shadow-[0_0_80px_rgba(139,92,246,0.35)] sm:h-[360px] sm:w-[360px] lg:h-[430px] lg:w-[430px] lg:rounded-[40px]">
 
-  <div className="h-full w-full rounded-[38px] bg-slate-950 flex items-center justify-center overflow-hidden">
+              <div className="h-full w-full overflow-hidden rounded-[30px] bg-slate-950 lg:rounded-[38px]">
 
-    <img
-      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800"
-      alt="Profile"
-      className="h-full w-full object-cover"
-    />
+                <img
+                  src={profile}
+                  alt="Rahul Gardare"
+                  className="h-full w-full object-cover transition-all duration-500 hover:scale-[1.20]"
+                  style={{
+                    objectPosition: "center 12%",
+                    transform: "scale(1.15)",
+                  }}
+                />
 
-  </div>
+              </div>
 
-</div>
-</div>
+            </div>
+
+          </div>
 
         </motion.div>
 

@@ -1,23 +1,69 @@
+import { useEffect, useState } from "react";
+
+import Background from "./components/Background";
 import Navbar from "./components/Navbar";
+import ScrollProgress from "./components/ScrollProgress";
+import Loader from "./components/Loader";
+
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
-import Background from "./components/Background";
+
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const timer = setTimeout(() => {
+
+      setLoading(false);
+
+    },1800);
+
+    return ()=>clearTimeout(timer);
+
+  },[]);
+
   return (
-    <main className="bg-slate-950 text-white min-h-screen">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </main>
+
+    <>
+
+      {
+
+        loading && <Loader/>
+
+      }
+
+      <ScrollProgress/>
+
+      <Background/>
+
+      <Navbar/>
+
+      <main className="text-white">
+
+        <Hero/>
+
+        <About/>
+
+        <Skills/>
+
+        <Projects/>
+
+        <Contact/>
+
+      </main>
+
+      <Footer/>
+
+    </>
+
   );
+
 }
 
 export default App;
