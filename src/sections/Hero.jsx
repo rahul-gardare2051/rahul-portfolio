@@ -151,10 +151,10 @@ function Hero() {
                 <img
                   src={profile}
                   alt="Rahul Gardare"
-                  className="h-full w-full object-cover transition-all duration-500 hover:scale-[1.20]"
+                  className="h-full w-full object-cover transition-all duration-500 hover:scale-[1.10]"
                   style={{
-                    objectPosition: "center 12%",
-                    transform: "scale(1.15)",
+                    objectPosition: "center 10%",
+                    transform: "scale(1.05)",
                   }}
                 />
 
